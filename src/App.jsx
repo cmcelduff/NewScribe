@@ -88,7 +88,7 @@ function App() {
           ) : loading ? (
             <Transcribing />
           ) : isAudioAvailable ? (
-            <FileDisplay file={file} audioStream={setAudioStream} />
+            <FileDisplay handleFormSubmission={handleFormSubmission} handleAudioReset={handleAudioReset} file={file} audioStream={setAudioStream} />
           ) : (
             <HomePage setFile={setFile} setAudioStream= {setAudioStream} /> 
           )}
