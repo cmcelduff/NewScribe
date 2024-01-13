@@ -84,7 +84,7 @@ function App() {
         <secton className='min-h-screen flex flex-col'>
           <Header />
           {output ? (
-            <Information />
+            <Information output={output} />
           ) : loading ? (
             <Transcribing />
           ) : isAudioAvailable ? (
