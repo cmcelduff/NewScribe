@@ -38,7 +38,7 @@ export default function Information(props) {
             {tab === 'transcription' ? (
                 <Transcription {...props} textElement={textElement} />
             ) : (
-                <Translation {...props} toLanguage={toLanguage} />
+                <Translation {...props} toLanguage={toLanguage} translating={translating} translation={translation} setTranslating={setTranslating} setTranslation={setTranslation} setToLanguage={setToLanguage}/>
             )}
             </div>
             <div className='flex items-center gap-4 mx-auto'>
