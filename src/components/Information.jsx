@@ -11,14 +11,19 @@ export default function Information(props) {
                 <button onClick={() => setTab('transcription')} className={'px-4 rounded duration-200 py-1 ' + (tab === 'transcription' ? ' bg-blue-300 text-white' : ' text-blue-400 hover:text-blue-600')}>Transcription</button>
                 <button onClick={() => setTab('translation')} className={'px-4 rounded duration-200 py-1  ' + (tab === 'translation' ? ' bg-blue-300 text-white' : ' text-blue-400 hover:text-blue-600')}>Translation</button>
             </div>
+            <div className='my-8 flex flex-col'>
             {tab === 'transcription' ? (
                 <Transcription {...props} />
             ) : (
                 <Translation {...props} />
             )}
-            <div className='flex items-center gap-4'>
-              <button className='speciaiBtn'>
-                <i class="fa-solid fa-copy"></i>
+            </div>
+            <div className='flex items-center gap-4 mx-auto'>
+              <button title="Copy" className='bg-white hover:text-blue-500 duration-200 text-blue px-2 aspect-square grid place-items-center rounded'>
+                <i className="fa-solid fa-copy"></i>
+              </button>
+              <button title="Download" className='bg-white hover:text-blue-500 duration-200 text-blue px-2 aspect-square grid place-items-center rounded'>
+                <i className="fa-solid fa-download"></i>
               </button>
             </div>
     </main>
