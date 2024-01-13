@@ -4,7 +4,7 @@ export default function Information(props) {
   const {output } = props
   const [tab, setTab] = useState('transcription')
   const [translation, setTranslation] = useState(null)
-  const [toLanguage, setToLanguage] = useState(null)
+  const [toLanguage, setToLanguage] = useState('Select Language')
   const [translating, setTranslating] = useState(null)
 
   function handleCopy() {
