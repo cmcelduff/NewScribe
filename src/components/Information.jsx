@@ -21,8 +21,19 @@ export default function Information(props) {
   }
 
   function generateTranslation() {
+    if (translating || toLanguage === 'Select language'){
+      return
+    }
 
+    setTranslating(true)
+
+    Worker.current.postMessage({
+      text: output.map(val => val.text),
+      src_language: 'eng_Latin',
+      tgt_lang: toLanguage
+    })
   }
+
 
   const textElement = tab == 'transcription' ? output.map(val => val.text) : ''
 
@@ -38,11 +49,11 @@ export default function Information(props) {
             {tab === 'transcription' ? (
                 <Transcription {...props} textElement={textElement} />
             ) : (
-                <Translation {...props} toLanguage={toLanguage} translating={translating} translation={translation} setTranslating={setTranslating} setTranslation={setTranslation} setToLanguage={setToLanguage}/>
+                <Translation {...props} toLanguage={toLanguage} translating={translating} textElement={textElement} setTranslating={setTranslating} setTranslation={setTranslation} setToLanguage={setToLanguage} generateTranslation={generateTranslation}/>
             )}
             </div>
             <div className='flex items-center gap-4 mx-auto'>
-              <button title="Copy" className='bg-white hover:text-blue-500 duration-200 text-blue px-2 aspect-square grid place-items-center rounded'>
+              <button onClick={generateTranslation} title="Copy" className='bg-white hover:text-blue-500 duration-200 text-blue px-2 aspect-square grid place-items-center rounded'>
                 <i className="fa-solid fa-copy"></i>
               </button>
               <button title="Download" className='bg-white hover:text-blue-500 duration-200 text-blue px-2 aspect-square grid place-items-center rounded'>
